@@ -118,7 +118,7 @@ const Hero = () => {
               className="rounded-full text-base bg-primary hover:bg-primary-hover text-white group relative overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-lg"
               asChild
             >
-              <a href="/resume.pdf" download>
+              <a href="/resume_Manan_Patel.pdf" download>
                 <Download className="mr-2 h-5 w-5 transition-all duration-300 group-hover:animate-bounce group-hover:scale-110" />
                 <span className="relative z-10">Download Resume</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />

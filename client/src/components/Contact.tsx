@@ -43,20 +43,21 @@ const Contact = () => {
 
   const onSubmit = async (values: ContactFormValues) => {
     try {
-      const response = await fetch("http://localhost:5000/api/email", {
+      const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+      const response = await fetch(`${API_URL}/api/email`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(values),
       });
-  
+
       if (!response.ok) {
         const err = await response.json();
         toast.error(err?.error || "Something went wrong.");
         return;
       }
-  
+
       toast.success("Message sent successfully!");
       form.reset();
     } catch (err) {
@@ -64,7 +65,6 @@ const Contact = () => {
       toast.error("Network error. Try again later.");
     }
   };
-  
 
   return (
     <section id="contact" className="py-20 px-6 bg-background">

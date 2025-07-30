@@ -1,19 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const { sendEmail } = require("../resend");
-const rateLimit = require("express-rate-limit");
 
-const emailLimiter = rateLimit({
-  windowMs: 24 * 60 * 60 * 1000, 
-  max: 5,
-  message: {
-    error: "You've reached the daily limit for sending messages.",
-  },
-  standardHeaders: true,
-  legacyHeaders: false,
-});
-
-router.post("/", emailLimiter, async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const { firstName, lastName, email, message } = req.body;
 

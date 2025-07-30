@@ -1,3 +1,4 @@
+// server/server.js
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
@@ -20,21 +21,19 @@ const corsOptions = {
   credentials: true,
   optionsSuccessStatus: 200,
 };
-
 app.use(cors(corsOptions));
 app.use(express.json());
-
 app.use(helmet());
 
 app.use("/api/email", emailRoutes);
 
 app.get("/healthz", (req, res) => res.status(200).send("ok"));
 
-const distPath = path.join(__dirname, "../client/dist");
+const distPath = path.join(__dirname, "public");
 
 app.use(express.static(distPath));
 
-app.get("*", (req, res) => {
+app.get("/:path(*)", (req, res) => {
   res.sendFile(path.join(distPath, "index.html"));
 });
 

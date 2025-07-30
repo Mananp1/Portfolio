@@ -2,12 +2,10 @@ const express = require("express");
 const router = express.Router();
 const { sendEmail } = require("../resend");
 const rateLimit = require("express-rate-limit");
-const { ipKeyGenerator } = require("express-rate-limit");
 
 const emailLimiter = rateLimit({
-  windowMs: 24 * 60 * 60 * 1000, // 1 day
+  windowMs: 24 * 60 * 60 * 1000, 
   max: 5,
-  keyGenerator: (req) => req.body.email || ipKeyGenerator(req),
   message: {
     error: "You've reached the daily limit for sending messages.",
   },

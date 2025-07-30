@@ -1,4 +1,3 @@
-// server/server.js (CommonJS)
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
@@ -6,28 +5,18 @@ const path = require("path");
 
 const emailRoutes = require("./routes/email");
 
-// App
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.set("trust proxy", 1);
 
-const allowlist = [
-  "https://manpatel.com",
-  "https://www.manpatel.com",
-  "http://localhost:3000",
-  "http://localhost:5173",
-];
-const railwayRegex = /\.railway\.app$/;
-
 const corsOptions = {
-  origin(origin, callback) {
-    if (!origin) return callback(null, true);
-    if (allowlist.includes(origin) || railwayRegex.test(origin)) {
-      return callback(null, true);
-    }
-    return callback(new Error("Not allowed by CORS"));
-  },
+  origin: [
+    "https://manpatel.com",
+    "https://www.manpatel.com",
+    "http://localhost:3000",
+    "http://localhost:5173",
+  ],
   credentials: true,
   optionsSuccessStatus: 200,
 };

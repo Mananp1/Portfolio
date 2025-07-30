@@ -3,7 +3,7 @@ import { NavigationSheet } from "./navigation-sheet";
 
 const Navbar = () => {
   return (
-    <nav className="h-16 bg-[#F9F3EF] sticky top-0 z-50 w-full">
+    <nav className="fixed top-0 left-0 right-0 h-16 bg-[#F9F3EF] z-50 w-full shadow-sm">
       <div className="h-full flex items-center justify-between w-full px-4 sm:px-6 lg:px-8 max-w-screen-xl mx-auto">
         {/* Logo/Brand */}
         <div className="flex-shrink-0">

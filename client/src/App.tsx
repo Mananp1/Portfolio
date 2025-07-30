@@ -6,7 +6,7 @@ import { Toaster } from "sonner";
 
 const App = () => {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-background overflow-x-hidden">
       <Navbar />
       <Home />
       <Projects />

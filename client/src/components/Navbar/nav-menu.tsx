@@ -47,14 +47,22 @@ export const NavMenu = ({ className = "", orientation }: NavMenuProps) => {
     }
   };
 
+  const isVertical = orientation === "vertical";
+
   return (
     <NavigationMenu orientation={orientation} className={className}>
-      <NavigationMenuList className="gap-6 space-x-0 data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-start text-base font-medium text-foreground">
+      <NavigationMenuList
+        className={`gap-6 space-x-0 text-base font-medium text-foreground ${
+          isVertical ? "flex-col items-start space-y-4" : "flex-row"
+        }`}
+      >
         {["home", "projects", "contact"].map((id) => (
-          <NavigationMenuItem key={id}>
+          <NavigationMenuItem key={id} className={isVertical ? "w-full" : ""}>
             <NavigationMenuLink
               asChild
               className={`relative cursor-pointer transition-colors duration-200 hover:text-primary ${
+                isVertical ? "w-full text-left" : ""
+              } ${
                 activeSection === id
                   ? "text-primary after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-primary after:scale-x-100 after:origin-left after:transition-transform after:duration-300"
                   : "text-foreground after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-transparent after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:bg-primary"
@@ -62,7 +70,9 @@ export const NavMenu = ({ className = "", orientation }: NavMenuProps) => {
             >
               <button
                 onClick={() => scrollToSection(id)}
-                className="bg-transparent border-none p-0 font-medium"
+                className={`bg-transparent border-none p-0 font-medium ${
+                  isVertical ? "w-full text-left py-2" : ""
+                }`}
               >
                 {id.charAt(0).toUpperCase() + id.slice(1)}
               </button>

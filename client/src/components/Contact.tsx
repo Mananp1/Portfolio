@@ -44,6 +44,8 @@ const Contact = () => {
   const onSubmit = async (values: ContactFormValues) => {
     try {
       const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+      console.log("Making request to:", `${API_URL}/api/email`);
+      
       const response = await fetch(`${API_URL}/api/email`, {
         method: "POST",
         headers: {
@@ -52,10 +54,29 @@ const Contact = () => {
         body: JSON.stringify(values),
       });
 
+      console.log("Response status:", response.status);
+      console.log("Response headers:", response.headers);
+
       if (!response.ok) {
-        const err = await response.json();
-        toast.error(err?.error || "Something went wrong.");
+        // Check if response is JSON before trying to parse
+        const contentType = response.headers.get("content-type");
+        if (contentType && contentType.includes("application/json")) {
+          const err = await response.json();
+          toast.error(err?.error || "Something went wrong.");
+        } else {
+          // If not JSON, get the text content for debugging
+          const text = await response.text();
+          console.error("Non-JSON response:", text);
+          toast.error("Server error. Please try again later.");
+        }
         return;
+      }
+
+      // Check if success response is JSON
+      const contentType = response.headers.get("content-type");
+      if (contentType && contentType.includes("application/json")) {
+        const result = await response.json();
+        console.log("Success response:", result);
       }
 
       toast.success("Message sent successfully!");

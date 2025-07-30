@@ -8,9 +8,8 @@ const projects = [
     title: "Furnishly",
     details:
       "Full-featured MERN application with authentication, cart, wishlist, and stripe payment integration.",
-    link: "https://github.com/Mananp1/ecommerce-app",
-    image:
-      "https://17bvpcuirf.ufs.sh/f/NzI8u7xRtKreQKRNqT95gmFiLYunc90bZlDwdGEBj3UKPaTq",
+    link: "https://furnishly.online/",
+    imageName: "/images/furnishly.webp",
   },
   {
     category: "MERN Stack",
@@ -18,17 +17,23 @@ const projects = [
     details:
       "A job portal with user auth, job tracking, job application, and admin panel for managing jobs and users.",
     link: "https://github.com/Mananp1/",
-    image:
-      "https://17bvpcuirf.ufs.sh/f/NzI8u7xRtKreLNxoGGohaCoWJEGufYkz9b4nKl7hSxP01XiQ",
+    imageName: "/images/jobify.webp",
   },
   {
     category: "Node + MongoDB",
     title: "University Event Manager",
     details:
       "Backend API for managing university events with user registration, ticketing, and analytics.",
-    link: "https://github.com/yourusername/university-events",
-    image:
-      "https://17bvpcuirf.ufs.sh/f/NzI8u7xRtKreAZmXIXBHU2VKSdrg6zyC0cXAt5pmQRLwTiYl",
+    link: "https://github.com/Mananp1/event-manager",
+    imageName: "/images/event.webp",
+  },
+  {
+    category: "MERN Stack",
+    title: "Thinkpad",
+    details:
+      "A full-stack application for managing and tracking tasks, built with MERN stack and MongoDB.",
+    link: "https://github.com/Mananp1/Thinkpad",
+    imageName: "/images/tasks.webp",
   },
 ];
 
@@ -96,7 +101,7 @@ const Projects = () => {
                   }`}
                 >
                   <img
-                    src={project.image}
+                    src={project.imageName}
                     alt={project.title}
                     className="w-full rounded-xl border border-border aspect-[6/4] object-cover"
                   />

@@ -16,7 +16,7 @@ const projects = [
     title: "Jobify",
     details:
       "A job portal with user auth, job tracking, job application, and admin panel for managing jobs and users.",
-    link: "https://github.com/Mananp1/",
+    link: "https://github.com/Mananp1/jobify",
     imageName: "/images/jobify.webp",
   },
   {
@@ -32,7 +32,7 @@ const projects = [
     title: "Thinkpad",
     details:
       "A full-stack application for managing and tracking tasks, built with MERN stack and MongoDB.",
-    link: "https://github.com/Mananp1/Thinkpad",
+    link: "https://github.com/Mananp1/thinkpad",
     imageName: "/images/tasks.webp",
   },
 ];
